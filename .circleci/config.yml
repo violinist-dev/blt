@@ -1,0 +1,61 @@
+# PHP CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-php/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # Specify the version you desire here
+      - image: circleci/php:7.3-node-browsers
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # Using the RAM variation mitigates I/O contention
+      # for database intensive operations.
+      - image: circleci/mysql:5.7-ram
+
+    environment:
+      # ORCA configuration.
+      ORCA_SUT_NAME: acquia/blt
+      ORCA_SUT_BRANCH: main
+      ORCA_VERSION: ^3
+      ORCA_PHPCS_STANDARD: AcquiaDrupalStrict
+      # Change to 1 to debug failed tests.
+      BLT_PRINT_COMMAND_OUTPUT: 1
+      # temporary pin to test
+      ORCA_JOB: STATIC_CODE_ANALYSIS
+
+    steps:
+      - checkout
+
+      - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
+      - run: sudo docker-php-ext-install zip
+
+      # before_install
+      - run: nvm use 12.13.1
+      - run: composer create-project --no-dev acquia/orca ../orca "$ORCA_VERSION"
+      - run: ../orca/bin/travis/before_install.sh
+
+      # install
+      - run: ../orca/bin/travis/install.sh
+
+      # before_script
+      - run: ../orca/bin/travis/before_script.sh
+
+      # script
+      - run: ../orca/bin/travis/script.sh
+
+      # before_cache
+      - run: ../orca/bin/travis/before_cache.sh
+
+      # after_success
+      - run: ../orca/bin/travis/after_success.sh
+
+      # after_failure
+      - run: ../orca/bin/travis/after_failure.sh
+
+      # after_script
+      - run: ../orca/bin/travis/after_script.sh
+      
