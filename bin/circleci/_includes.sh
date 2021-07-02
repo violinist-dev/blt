@@ -46,6 +46,8 @@ export ORCA_FIXTURE_DIR=${ORCA_FIXTURE_DIR:="$ORCA_ROOT/../orca-build"}
 export ORCA_FIXTURE_PROFILE=${ORCA_FIXTURE_PROFILE:="orca"}
 # This can be gleaned from CIRCLE_WORKING_DIRECTORY, but it uses shorthand ~
 # instead of $HOME that causes problems for some scripts.
+# This is also broken because ORCA expects the project directory to match the
+# name of the project, e.g. /home/circleci/blt
 export ORCA_SUT_DIR=${ORCA_SUT_DIR:="/home/circleci/project"}
 ORCA_SUT_HAS_NIGHTWATCH_TESTS=$(cd "$ORCA_SUT_DIR"; find . -regex ".*/Nightwatch/.*" -name \*.js)
 export ORCA_SUT_HAS_NIGHTWATCH_TESTS
