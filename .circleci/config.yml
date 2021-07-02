@@ -34,7 +34,6 @@ jobs:
       - run: sudo docker-php-ext-install zip
 
       # before_install
-      - run: nvm use 12.13.1
       - run: composer create-project --no-dev acquia/orca ../orca "$ORCA_VERSION"
       - run: ../orca/bin/travis/before_install.sh
 
@@ -58,4 +57,3 @@ jobs:
 
       # after_script
       - run: ../orca/bin/travis/after_script.sh
-      
