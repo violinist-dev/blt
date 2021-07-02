@@ -73,7 +73,7 @@ export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="$ORCA_ROOT/bin:$PATH"
 export PATH="$ORCA_ROOT/vendor/bin:$PATH"
 export PATH="$ORCA_FIXTURE_DIR/vendor/bin:$PATH"
-export PATH="$CIRCLE_WORKING_DIRECTORY/vendor/bin:$PATH"
+export PATH="/home/circleci/project/vendor/bin:$PATH"
 # Put this last to ensure that the host's Composer is preferred.
 export PATH="$HOME/.phpenv/shims/:$PATH"
 
