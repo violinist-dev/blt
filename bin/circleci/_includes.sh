@@ -46,7 +46,7 @@ export ORCA_FIXTURE_DIR=${ORCA_FIXTURE_DIR:="$ORCA_ROOT/../orca-build"}
 export ORCA_FIXTURE_PROFILE=${ORCA_FIXTURE_PROFILE:="orca"}
 # This can be gleaned from CIRCLE_WORKING_DIRECTORY, but it uses shorthand ~
 # instead of $HOME that causes problems for some scripts.
-export ORCA_SUT_DIR=${ORCA_SUT_DIR:="/home/circleci/project"}
+export ORCA_SUT_DIR=${ORCA_SUT_DIR:="/home/circleci/project/blt"}
 ORCA_SUT_HAS_NIGHTWATCH_TESTS=$(cd "$ORCA_SUT_DIR"; find . -regex ".*/Nightwatch/.*" -name \*.js)
 export ORCA_SUT_HAS_NIGHTWATCH_TESTS
 export ORCA_SUT_MACHINE_NAME=${ORCA_SUT_NAME##*\/}
@@ -73,7 +73,7 @@ export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="$ORCA_ROOT/bin:$PATH"
 export PATH="$ORCA_ROOT/vendor/bin:$PATH"
 export PATH="$ORCA_FIXTURE_DIR/vendor/bin:$PATH"
-export PATH="/home/circleci/project/vendor/bin:$PATH"
+export PATH="/home/circleci/project/blt/vendor/bin:$PATH"
 # Put this last to ensure that the host's Composer is preferred.
 export PATH="$HOME/.phpenv/shims/:$PATH"
 
