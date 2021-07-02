@@ -44,7 +44,9 @@ export ORCA_COVERALLS_ENABLE=${ORCA_COVERALLS_ENABLE:=FALSE}
 export ORCA_COVERAGE_ENABLE=${ORCA_COVERAGE_ENABLE:="$ORCA_COVERALLS_ENABLE"}
 export ORCA_FIXTURE_DIR=${ORCA_FIXTURE_DIR:="$ORCA_ROOT/../orca-build"}
 export ORCA_FIXTURE_PROFILE=${ORCA_FIXTURE_PROFILE:="orca"}
-export ORCA_SUT_DIR=${ORCA_SUT_DIR:=${CIRCLE_WORKING_DIRECTORY}}
+# This can be gleaned from CIRCLE_WORKING_DIRECTORY, but it uses shorthand ~
+# instead of $HOME that causes problems for some scripts.
+export ORCA_SUT_DIR=${ORCA_SUT_DIR:="/home/circle/project"}
 ORCA_SUT_HAS_NIGHTWATCH_TESTS=$(cd "$ORCA_SUT_DIR"; find . -regex ".*/Nightwatch/.*" -name \*.js)
 export ORCA_SUT_HAS_NIGHTWATCH_TESTS
 export ORCA_SUT_MACHINE_NAME=${ORCA_SUT_NAME##*\/}
