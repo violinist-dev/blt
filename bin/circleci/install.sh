@@ -10,6 +10,7 @@
 #     Creates the test fixture and places the SUT.
 
 cd "$(dirname "$0")" || exit; source _includes.sh
+ls /home/circleci/project
 
 if [[ "$ORCA_JOB" ]]; then
   eval "orca ci:run $ORCA_JOB install $ORCA_SUT_NAME"
