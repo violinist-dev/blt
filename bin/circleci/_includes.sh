@@ -37,7 +37,7 @@ if [[ ! "$CIRCLECI" && "$ORCA_JOB" = "STATIC_CODE_ANALYSIS" ]]; then
 fi
 
 # Set environment variables.
-ORCA_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+ORCA_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
 export ORCA_ROOT
 export ORCA_COVERAGE_CLOVER=${ORCA_COVERAGE_CLOVER:="$HOME/build/logs/clover.xml"}
 export ORCA_COVERALLS_ENABLE=${ORCA_COVERALLS_ENABLE:=FALSE}
