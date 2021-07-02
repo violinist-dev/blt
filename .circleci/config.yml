@@ -35,25 +35,25 @@ jobs:
 
       # before_install
       - run: composer create-project --no-dev acquia/orca ../orca "$ORCA_VERSION"
-      - run: ../orca/bin/travis/before_install.sh
+      - run: ./bin/circleci/before_install.sh
 
       # install
-      - run: ../orca/bin/travis/install.sh
+      - run: ./bin/circleci/install.sh
 
       # before_script
-      - run: ../orca/bin/travis/before_script.sh
+      - run: ./bin/circleci/before_script.sh
 
       # script
-      - run: ../orca/bin/travis/script.sh
+      - run: ./bin/circleci/script.sh
 
       # before_cache
-      - run: ../orca/bin/travis/before_cache.sh
+      - run: ./bin/circleci/before_cache.sh
 
       # after_success
-      - run: ../orca/bin/travis/after_success.sh
+      - run: ./bin/circleci/after_success.sh
 
       # after_failure
-      - run: ../orca/bin/travis/after_failure.sh
+      - run: ./bin/circleci/after_failure.sh
 
       # after_script
-      - run: ../orca/bin/travis/after_script.sh
+      - run: ./bin/circleci/after_script.sh
